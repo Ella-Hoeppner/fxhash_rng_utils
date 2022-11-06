@@ -1,4 +1,4 @@
-(ns fxhash.rng)
+(ns fxrng.rng)
 
 (defn fxrand
   ([] (js/fxrand))
