@@ -55,3 +55,7 @@
                          (drop (inc index) sorted-coll))
                  (conj shuffled-list (nth sorted-coll index))))
         shuffled-list))))
+
+(defn fxrand-paretto [shape scale]
+  (/ (Math/pow (* shape scale) shape)
+     (Math/pow (fxrand) (+ shape 1))))
