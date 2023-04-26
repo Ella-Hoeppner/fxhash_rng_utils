@@ -13,11 +13,12 @@
     1
     (inc (fxrand-geom p))))
 
-(defn fxrand-exp [& [lambda]]
-  (/ (- (Math/log (fxrand))) lambda))
+(defn fxrand-exp
+  ([lambda] (/ (- (Math/log (fxrand))) lambda))
+  ([] (fxrand-exp 1)))
 
 (defn fx-flat-dirichlet [n]
-  (let [raw-samples (repeatedly n (fxrand-exp))
+  (let [raw-samples (repeatedly n fxrand-exp)
         sum (apply + raw-samples)]
     (mapv #(/ % sum) raw-samples)))
 
