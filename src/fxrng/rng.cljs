@@ -60,3 +60,13 @@
 (defn fxrand-paretto [shape scale]
   (/ (Math/pow (* shape scale) shape)
      (Math/pow (fxrand) (+ shape 1))))
+
+(defn fx-box-muller []
+  (let [angle (* Math/PI 2 (fxrand))]
+    (mapv (comp (partial * (Math/sqrt (* -2 (Math/log (fxrand)))))
+                #(% angle))
+          [Math/cos Math/sin])))
+
+(defn fxrand-normal
+  ([] (first (fx-box-muller)))
+  ([n] (vec (take n (apply concat (repeatedly fx-box-muller))))))
