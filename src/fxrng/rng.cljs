@@ -67,6 +67,9 @@
                 #(% angle))
           [Math/cos Math/sin])))
 
-(defn fxrand-normal
-  ([] (first (fx-box-muller)))
-  ([n] (vec (take n (apply concat (repeatedly fx-box-muller))))))
+(defn fxrand-normal []
+  (first (fx-box-muller)))
+
+(defn fxrand-normals
+  ([] (apply concat (repeatedly fx-box-muller)))
+  ([n] (take n (fxrand-normals))))
