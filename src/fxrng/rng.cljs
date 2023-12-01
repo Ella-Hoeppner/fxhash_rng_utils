@@ -1,7 +1,7 @@
 (ns fxrng.rng)
 
 (defn fxrand
-  ([] (js/fxrand))
+  ([] (js/$fx.rand))
   ([maximum] (* maximum (fxrand)))
   ([minimum maximum] (+ minimum (fxrand (- maximum minimum))))
   ([minimum maximum exponent] (+ minimum
